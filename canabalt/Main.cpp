@@ -6,6 +6,7 @@
 
 //project includes
 #include "AssetManager.h"
+#include "Animation.h"
 
 int main()
 {
@@ -36,6 +37,12 @@ int main()
 	testText.setFont(AssetManager::GetFont("fonts/mainfont.ttf"));
 	testText.setString("Test Text");
 
+	//Testing animation
+	Animation testAnimation;
+	testAnimation.SetSprite(testSprite);
+	testAnimation.AddFrame(AssetManager::GetTexture("graphics/playerRun1.png"));
+	testAnimation.AddFrame(AssetManager::GetTexture("graphics/playerRun2.png"));
+
 	// end game setup
 	// --------------------------------------
 
@@ -65,6 +72,9 @@ int main()
 		// Update
 		// --------------------------------------
 		sf::Time frameTime = gameClock.restart();
+
+		//u[date our animation
+		testAnimation.Update(frameTime);
 
 		// end update
 		// --------------------------------------
